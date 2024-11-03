@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   res.json(postList);
 });
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
   const post = req.body;
   await Posts.create(post);
   res.json(post);
