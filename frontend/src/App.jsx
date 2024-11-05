@@ -7,7 +7,6 @@ import { Post } from "./components/Post";
 function App() {
   return (
     <div className="App">
-      {/* some comment test */}
       <Router>
         <div className="navbar">
           <Link to="createpost">Create a Post</Link>
