@@ -2,18 +2,24 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Home } from "./components/Home";
 import { CreatePost } from "./components/CreatePost";
+import { Post } from "./components/Post";
 
 function App() {
   return (
     <div className="App">
       {/* some comment test */}
       <Router>
-        <Link to="createpost">Create a Post</Link>
-        <Link to="/">Home</Link>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/createpost" element={<CreatePost />} />
-        </Routes>
+        <div className="navbar">
+          <Link to="createpost">Create a Post</Link>
+          <Link to="/">Home</Link>
+        </div>
+        <div className="body-container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/createpost" element={<CreatePost />} />
+            <Route path="/post/:id" element={<Post />} />
+          </Routes>
+        </div>
       </Router>
     </div>
   );
