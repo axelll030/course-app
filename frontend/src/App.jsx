@@ -6,6 +6,7 @@ import { CreatePost } from "./components/CreatePost";
 function App() {
   return (
     <div className="App">
+      {/* some comment test */}
       <Router>
         <Link to="createpost">Create a Post</Link>
         <Link to="/">Home</Link>
