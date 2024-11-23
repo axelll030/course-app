@@ -12,13 +12,11 @@ function App() {
           <Link to="createpost">Create a Post</Link>
           <Link to="/">Home</Link>
         </div>
-        <div className="body-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/createpost" element={<CreatePost />} />
-            <Route path="/post/:id" element={<Post />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/post/:id" element={<Post />} />
+        </Routes>
       </Router>
     </div>
   );

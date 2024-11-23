@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const CreatePost = () => {
   const validationSchema = Yup.object().shape({
@@ -10,6 +11,8 @@ export const CreatePost = () => {
     userName: Yup.string().min(3).max(15).required(),
   });
 
+  const navigate = useNavigate();
+
   const initialValues = {
     title: "",
     postText: "",
@@ -17,34 +20,43 @@ export const CreatePost = () => {
   };
 
   const handleSubmit = (values) => {
-    axios.post("http://localhost:3001/posts", values).then((response) => {});
+    axios
+      .post("http://localhost:3001/posts", values)
+      .then((response) => {
+        if (response.status === 201) {
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+      });
   };
 
   return (
-    <div className="create-post-page">
+    <div className="createPostPage">
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className="form-container">
+        <Form className="formContainer">
           <label>Title: </label>
           <Field
-            id="input-create-post"
+            id="inputCreatePost"
             name="title"
             placeholder="Enter post title..."
           />
           <ErrorMessage name="title" component="span" />
           <label>Post: </label>
           <Field
-            id="input-create-post"
+            id="inputCreatePost"
             name="postText"
             placeholder="Enter post text..."
           />
           <ErrorMessage name="postText" component="span" />
           <label>User Name: </label>
           <Field
-            id="input-create-post"
+            id="inputCreatePost"
             name="userName"
             placeholder="Enter user name..."
           />

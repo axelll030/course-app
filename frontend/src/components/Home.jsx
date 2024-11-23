@@ -21,9 +21,9 @@ export const Home = () => {
           navigate(`/post/${post.id}`);
         }}
       >
-        <div className="post-title">{post.title}</div>
-        <div className="post-body">{post.postText}</div>
-        <div className="post-username">{post.userName}</div>
+        <div className="title">{post.title}</div>
+        <div className="body">{post.postText}</div>
+        <div className="footer">{post.userName}</div>
       </div>
     );
   });
