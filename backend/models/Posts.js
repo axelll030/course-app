@@ -5,5 +5,11 @@ module.exports = (sequelize, dataTypes) => {
     userName: { type: dataTypes.STRING, allowNull: false },
   });
 
+  // create a link
+  Posts.associate = (models) => {
+    Posts.hasMany(models.Comments, {
+      onDelete: "cascade",
+    });
+  };
   return Posts;
 };
